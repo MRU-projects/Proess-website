@@ -413,6 +413,8 @@ footer{background:var(--dark-earth);padding:3rem 5%;display:flex;justify-content
       <a href="#about">About</a>
       <a href="#process">Process</a>
       <a href="#contact">Contact</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Use</a>
     </div>
     <div class="footer-divider"></div>
     <a class="footer-linkedin" href="https://www.linkedin.com/in/sarah-scruby-81691037/" target="_blank" rel="noopener" aria-label="PROESS on LinkedIn">
@@ -452,5 +454,62 @@ document.querySelectorAll('.mobile-nav-link, .mobile-cta').forEach(link => {
   });
 });
 </script>
+
+<!-- Cookie Consent Banner -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:var(--dark-earth);border-top:2px solid var(--terracotta);padding:1.25rem 5%;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
+  <p style="color:var(--bone);font-size:0.82rem;line-height:1.6;margin:0;max-width:700px;">
+    We use cookies to improve your experience and analyse website traffic. By clicking <strong>Accept</strong>, you consent to our use of cookies as described in our <a href="/privacy.html" style="color:var(--warm-sand);text-decoration:underline;">Privacy Policy</a>. You can decline non-essential cookies by clicking <strong>Decline</strong>.
+  </p>
+  <div style="display:flex;gap:1rem;flex-shrink:0;">
+    <button onclick="acceptCookies()" style="background:var(--terracotta);color:var(--bone);border:none;padding:0.6rem 1.5rem;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;font-family:var(--font-body);font-weight:500;">Accept</button>
+    <button onclick="declineCookies()" style="background:transparent;color:var(--warm-sand);border:1px solid rgba(201,168,130,0.4);padding:0.6rem 1.5rem;font-size:0.78rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;font-family:var(--font-body);font-weight:500;">Decline</button>
+  </div>
+</div>
+
+<script>
+  // Cookie consent logic
+  function getCookie(name) {
+    const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+    return match ? match[2] : null;
+  }
+
+  function setCookie(name, value, days) {
+    const expires = new Date(Date.now() + days * 864e5).toUTCString();
+    document.cookie = name + '=' + value + '; expires=' + expires + '; path=/; SameSite=Lax';
+  }
+
+  function loadGoogleAnalytics() {
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
+    document.head.appendChild(script);
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  }
+
+  function acceptCookies() {
+    setCookie('cookie_consent', 'accepted', 365);
+    document.getElementById('cookie-banner').style.display = 'none';
+    loadGoogleAnalytics();
+  }
+
+  function declineCookies() {
+    setCookie('cookie_consent', 'declined', 365);
+    document.getElementById('cookie-banner').style.display = 'none';
+  }
+
+  // Check on page load
+  window.addEventListener('DOMContentLoaded', function() {
+    const consent = getCookie('cookie_consent');
+    if (!consent) {
+      document.getElementById('cookie-banner').style.display = 'flex';
+    } else if (consent === 'accepted') {
+      loadGoogleAnalytics();
+    }
+  });
+</script>
+
 </body>
 </html>
