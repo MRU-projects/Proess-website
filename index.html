@@ -157,8 +157,8 @@ footer{background:var(--dark-earth);padding:3rem 5%;display:flex;justify-content
   .nav-hamburger{display:flex}
 
   /* HERO */
-  .hero{padding:0 6% 5rem}
-  .hero-headline{font-size:clamp(2.2rem,8vw,3.5rem)}
+  .hero{padding:0 6% 4rem;min-height:85vh;justify-content:flex-end}
+  .hero-headline{font-size:clamp(2rem,7vw,3.2rem)}
   .hero-sub{font-size:1rem}
   .hero-actions{flex-direction:column;align-items:flex-start;gap:0.75rem}
   .btn-primary,.btn-ghost{width:100%;text-align:center;padding:1rem 1.5rem}
@@ -214,7 +214,8 @@ footer{background:var(--dark-earth);padding:3rem 5%;display:flex;justify-content
 
 @media(max-width:520px){
   /* Extra small phones */
-  .hero-headline{font-size:2rem}
+  .hero{min-height:80vh;padding:0 6% 3.5rem}
+  .hero-headline{font-size:1.9rem}
   .process-steps{grid-template-columns:1fr}
   .step{border-right:none !important;border-bottom:1px solid rgba(180,178,169,0.4);padding:1.5rem 0 !important}
   .step:last-child{border-bottom:none}
@@ -227,8 +228,8 @@ footer{background:var(--dark-earth);padding:3rem 5%;display:flex;justify-content
 
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;width:100%;}
 .contact-left{display:flex;flex-direction:column;justify-content:flex-start;}
-.contact-right{background:#fff;padding:2rem;border-radius:4px;}
-@media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:3rem;}}
+.contact-right{background:#F5F0E8;padding:2rem;border-radius:4px;}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr;gap:2rem;} .contact-right{padding:1.5rem;}}
 </style>
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
   <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
@@ -406,7 +407,6 @@ footer{background:var(--dark-earth);padding:3rem 5%;display:flex;justify-content
       <h2 class="cta-headline reveal">Your next project deserves a team <em>that's already done this.</em></h2>
       <div class="cta-actions reveal" style="margin-top:2.5rem;">
         <a href="#" onclick="openCalendly(event)" class="btn-cta-main">Book a discovery call</a>
-        <a href="mailto:info@proess.dev" class="btn-cta-sub">Or send us an email</a>
       </div>
     </div>
     <div class="contact-right reveal">
